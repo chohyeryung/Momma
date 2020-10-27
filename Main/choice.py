@@ -13,6 +13,8 @@ class Choice(QWidget):
         btnDiary=QPushButton('일기 쓰기', self)
         btnGame=QPushButton('맘마 먹자',self)
 
+
+
         btnDiary.move(100,100)
         btnDiary.resize(300,300)
         btnDiary.clicked.connect(self.GoDiary)
