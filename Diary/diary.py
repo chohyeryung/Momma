@@ -1,9 +1,9 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QCoreApplication
 
 class Diary(QWidget):
-
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -14,8 +14,9 @@ class Diary(QWidget):
         btn.resize(btn.sizeHint())
         btn.clicked.connect(QCoreApplication.instance().quit)
 
-        self.setWindowTitle('Quit Button')
-        self.setGeometry(300,300,300,200)
+        self.setWindowTitle('Momma')
+        self.setWindowIcon(QIcon('baby.png'))
+        self.setGeometry(300, 100, 1200, 800)
         self.show()
 
 if __name__=='__main__':
