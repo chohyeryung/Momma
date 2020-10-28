@@ -1,8 +1,10 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
+from PyQt5.uic.properties import QtWidgets
 
-from Diary import Diary
+from Diary.diary import Diary
+
 
 class Choice(QWidget):
     def __init__(self):
@@ -12,8 +14,6 @@ class Choice(QWidget):
     def initUI(self):
         btnDiary=QPushButton('일기 쓰기', self)
         btnGame=QPushButton('맘마 먹자',self)
-
-
 
         btnDiary.move(100,100)
         btnDiary.resize(300,300)
@@ -41,12 +41,12 @@ class Choice(QWidget):
         self.show()
 
     def GoDiary(self):
-        print('Diary 클릭!')
-        win=Diary()
-        r=self.win.show()
+        self.hide()
+        self.ex=Diary()
+        self.ex.show()
 
 if __name__=="__main__":
     app=QApplication(sys.argv)
-    ex=Choice()
-    ex.show()
+    main=Choice()
+    main.show()
     sys.exit(app.exec_())
