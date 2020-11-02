@@ -5,6 +5,8 @@ from PyQt5.QtCore import *
 
 from Calender.Upload import Upload
 
+from Main.choice import Choice
+
 
 class Calender(QMainWindow):
     def __init__(self):
@@ -37,11 +39,11 @@ class Calender(QMainWindow):
 
     def setupUI(self):
         btn1 = QPushButton("저장", self)
-        btn2 = QPushButton("닫기", self)
+        btn2 = QPushButton("취소", self)
         btn1.setGeometry(450, 650, 80, 30)
         btn1.clicked.connect(self.GoUpload)
         btn2.setGeometry(650, 650, 80, 30)
-        btn2.clicked.connect(QCoreApplication.instance().quit)
+        btn2.clicked.connect(self.exist)
 
     # Calendar Open 함수
     @pyqtSlot()
@@ -80,6 +82,11 @@ class Calender(QMainWindow):
         today_diary.close()
         #self.file_upload.set(self.strDate, self.contents)
         # self.file_upload.get()
+
+    def exist(self):
+        self.hide()
+        self.ex = Choice()
+        self.ex.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
