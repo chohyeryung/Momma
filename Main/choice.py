@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.uic.properties import QtWidgets
 
-from Diary.diary import Diary
+from Calender.Calender import Calender
 
 
 class Choice(QWidget):
@@ -42,7 +42,7 @@ class Choice(QWidget):
 
     def GoDiary(self):
         self.hide()
-        self.ex=Diary()
+        self.ex=Calender()
         self.ex.show()
 
 if __name__=="__main__":

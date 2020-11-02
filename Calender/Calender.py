@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
 from PyQt5.QtCore import *
 
 
-class MainWindow(QMainWindow):
+class Calender(QMainWindow):
     def __init__(self):
         super().__init__()
         # 윈도우 설정
@@ -58,6 +58,6 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mainWindow = MainWindow()
+    mainWindow = Calender()
     mainWindow.show()
     sys.exit(app.exec_())
