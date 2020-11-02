@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
     QApplication, QCalendarWidget, QLineEdit, QPlainTextEdit
 from PyQt5.QtCore import *
 
+from Calender.Upload import Upload
+
 
 class Calender(QMainWindow):
     def __init__(self):
@@ -28,6 +30,7 @@ class Calender(QMainWindow):
 
         self.b = QPlainTextEdit(self)
         self.b.insertPlainText("일기를 작성해요주세용.\n")
+        # self.contents=self.b.QPlainTextEdit.toPlainText()
         self.b.setGeometry(120, 420, 970, 200)
 
         self.setupUI()
@@ -36,7 +39,7 @@ class Calender(QMainWindow):
         btn1 = QPushButton("저장", self)
         btn2 = QPushButton("닫기", self)
         btn1.setGeometry(450, 650, 80, 30)
-        btn1.clicked.connect(QCoreApplication.instance().quit)
+        btn1.clicked.connect(self.GoUpload)
         btn2.setGeometry(650, 650, 80, 30)
         btn2.clicked.connect(QCoreApplication.instance().quit)
 
@@ -44,7 +47,8 @@ class Calender(QMainWindow):
     @pyqtSlot()
     def calendar_change(self):
         cal_date = self.cal.selectedDate()
-        strDate = cal_date.toString('\t\t\t\t\t\t\t\t' + 'yyyy년 ' + 'MM월 ' +'dd일')  # QDate 를 str
+        strDate = cal_date.toString('yyyy년 ' + 'MM월 ' +'dd일')  # QDate 를 str
+        self.calendar_label.setAlignment(Qt.AlignCenter)
         self.calendar_label.setText(strDate)
 
     # 달력에서 현재를 선택
@@ -55,6 +59,27 @@ class Calender(QMainWindow):
         #self.cal.setSelectedDate(QDate())
         self.cal.currentPageChanged(self, 2022, 10)
 
+    def GoUpload(self):
+        self.contents=''
+        self.date=self.calendar_label.text()
+        for line in self.b.toPlainText():
+            self.contents+=line
+        #print(self.contents)
+        self.file_upload=Upload()
+        self.file_upload.set(self.date, self.contents)
+        # print(self.file_upload.date)
+        # print(self.file_upload.contents)
+        today_diary=open('diary.txt','a',encoding='utf-8')
+
+        today_diary.write(self.file_upload.date)
+        today_diary.write('\t')
+        today_diary.write(self.file_upload.contents)
+        today_diary.write('\n')
+        today_diary.write('\n')
+
+        today_diary.close()
+        #self.file_upload.set(self.strDate, self.contents)
+        # self.file_upload.get()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
