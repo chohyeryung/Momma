@@ -1,14 +1,12 @@
 import sys
-from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
-    QApplication, QCalendarWidget, QPlainTextEdit
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-from upload import Upload
+from Upload_diary import Upload
 
-from choice import Choice
+#from choice import Choice
 
-
-class Calender(QMainWindow):
+class Calender(QWidget):
     def __init__(self):
         super().__init__()
         # 윈도우 설정
