@@ -3,8 +3,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from calendar import *
 
+from calender import Calender
 
-class Choice(QWidget):
+class Choice(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -12,14 +13,19 @@ class Choice(QWidget):
     def initUI(self):
         btnDiary=QPushButton('일기 쓰기', self)
         btnGame=QPushButton('맘마 먹자',self)
+        btnShowDiary=QPushButton('일기 보기',self)
 
         btnDiary.move(100,100)
-        btnDiary.resize(300,300)
+        btnDiary.resize(200,200)
         btnDiary.clicked.connect(self.GoDiary)
 
         btnGame.move(500, 100)
-        btnGame.resize(300, 300)
+        btnGame.resize(200, 200)
         # btnGame.clicked.connect(self.GoGame)
+
+        btnShowDiary.move(900, 100)
+        btnShowDiary.resize(200, 200)
+        #btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
         vbox.addStretch(1)
@@ -39,6 +45,7 @@ class Choice(QWidget):
         self.show()
 
     def GoDiary(self):
+        print('눌렀따')
         self.hide()
         self.ex = Calendar()
         self.ex.show()
