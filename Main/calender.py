@@ -1,11 +1,11 @@
 import sys
 from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
-    QApplication, QCalendarWidget, QLineEdit, QPlainTextEdit
+    QApplication, QCalendarWidget, QPlainTextEdit
 from PyQt5.QtCore import *
 
-from Calender.Upload import Upload
+from upload import Upload
 
-from Main.choice import Choice
+from choice import Choice
 
 
 class Calender(QMainWindow):
