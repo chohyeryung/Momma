@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
+from calendar import *
 
-from calendar import Calendar
 
 class Choice(QWidget):
     def __init__(self):
@@ -40,7 +40,7 @@ class Choice(QWidget):
 
     def GoDiary(self):
         self.hide()
-        self.ex=Calender()
+        self.ex = Calendar()
         self.ex.show()
 
 if __name__=="__main__":
