@@ -1,10 +1,14 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
+    QApplication, QCalendarWidget, QPlainTextEdit
 from PyQt5.QtCore import *
-from choice import Choice
-from Upload import Upload
 
-class Calender(QWidget):
+from upload import Upload
+
+from choice import Choice
+
+
+class Calender(QMainWindow):
     def __init__(self):
         super().__init__()
         # 윈도우 설정
@@ -67,7 +71,7 @@ class Calender(QWidget):
         self.file_upload.set(self.date, self.contents)
         # print(self.file_upload.date)
         # print(self.file_upload.contents)
-        today_diary=open('diary.txt', 'a', encoding='utf-8')
+        today_diary=open('diary.txt','a',encoding='utf-8')
 
         today_diary.write(self.file_upload.date)
         today_diary.write('\t')
@@ -86,6 +90,6 @@ class Calender(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mainWindow = Calender2()
+    mainWindow = Calender()
     mainWindow.show()
     sys.exit(app.exec_())

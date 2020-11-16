@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
-from calender import Calender
+
+from calendar import Calendar
 
 class Choice(QWidget):
     def __init__(self):
