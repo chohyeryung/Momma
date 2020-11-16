@@ -111,8 +111,20 @@ while running:
     screen.blit(enemy, (enemy_x_pos, enemy_y_pos)) #적 그리기
 
     ellipsis_time = (pygame.time.get_ticks() - start_ticks) / 1000 #초 단위로 지난 시간 표시
+    #출력할 글자 ,True, 글자 색 설정
+    timer= game_font.render(str(int(total_time - ellipsis_time)), True, (255,255,255))
+    screen.blit(timer, (10, 20))
 
+    #지정된 시간보다 시간을 초과한다면
+    if total_time - ellipsis_time <= 0:
+        print("시간 초과")
+        running = False
 
     pygame.display.update()  # 화면을 계속해서 호출해야 함
+
+#끝나기 전 잠시 기달리는 시간
+pygame.time.delay(2000)
+
+
 #py게임 종료
 pygame.quit()
