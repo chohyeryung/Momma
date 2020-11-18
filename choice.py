@@ -1,16 +1,17 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
-from calendar import *
+from calendar import Calendar
 
-from calender import Calender
+from calenderWindow import CalendarWindow
+
 
 class Choice(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.choiceUI()
 
-    def initUI(self):
+    def choiceUI(self):
         btnDiary=QPushButton('일기 쓰기', self)
         btnGame=QPushButton('맘마 먹자',self)
         btnShowDiary=QPushButton('일기 보기',self)
@@ -46,9 +47,9 @@ class Choice(QMainWindow):
 
     def GoDiary(self):
         print('눌렀따')
+        ex = CalendarWindow(self)
+        ex.show()
         self.hide()
-        self.ex = Calendar()
-        self.ex.show()
 
 if __name__=="__main__":
     app=QApplication(sys.argv)

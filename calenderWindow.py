@@ -1,13 +1,14 @@
 import sys
-from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
-    QApplication, QCalendarWidget, QPlainTextEdit
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from Main.choice import Choice
 
+from Upload_diary import Upload
 
-class Calender(QMainWindow):
-    def __init__(self):
+class CalendarWindow(QMainWindow):
+    def __init__(self,choice_window):
         super().__init__()
+        self.choice_window=choice_window
+
         # 윈도우 설정
         self.setGeometry(300, 100, 1200, 800)  # x, y, w, h
         self.setWindowTitle('Canlendar Widget')
@@ -82,8 +83,8 @@ class Calender(QMainWindow):
 
     def exist(self):
         self.hide()
-        self.ex = Choice()
-        self.ex.show()
+        ch=self.choice_window
+        ch.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

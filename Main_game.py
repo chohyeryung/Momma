@@ -24,10 +24,10 @@ pygame.display.set_caption("아이에게 좋은것만 먹이세요")
 clock = pygame.time.Clock()
 
 #배경이미지 불러오기
-background = pygame.image.load("D:\Momma\Background.png")
+background = pygame.image.load("C:\pypjt\Background.png")
 
 #캐릭터 불러오기
-character= pygame.image.load("D:\Momma\sd.png")
+character= pygame.image.load("C:\pypjt\sd.png")
 character_size = character.get_rect().size # 이미지 크기 구해옴 70*70 적당함
 character_width = character_size[0] #가로크기
 character_height = character_size[1] #세로 크기
@@ -43,7 +43,7 @@ character_speed = 10
 
 #적 캐릭터
 #캐릭터 불러오기
-enemy = pygame.image.load("D:\Momma\Black.png")
+enemy = pygame.image.load("C:\pypjt\Black.png")
 enemy_size = enemy.get_rect().size # 이미지 크기 구해옴 70*70 적당함
 enemy_width = enemy_size[0] #가로크기
 enemy_height = enemy_size[1] #세로 크기
