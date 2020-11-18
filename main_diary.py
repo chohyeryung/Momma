@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QIcon
 
-from calenderWindow import Calender
+from calendarWindow import CalendarWindow
 from choice import Choice
 import sys
 from PyQt5.QtWidgets import *

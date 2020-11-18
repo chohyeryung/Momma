@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from calendar import Calendar
 
-from calenderWindow import CalendarWindow
+from calendarWindow import CalendarWindow
 
 
 class Choice(QMainWindow):
@@ -47,8 +47,8 @@ class Choice(QMainWindow):
 
     def GoDiary(self):
         print('눌렀따')
-        ex = CalendarWindow(self)
-        ex.show()
+        self.ex = CalendarWindow(self)
+        self.ex.show()
         self.hide()
 
 if __name__=="__main__":

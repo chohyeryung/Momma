@@ -72,7 +72,7 @@ class CalendarWindow(QMainWindow):
         today_diary=open('diary.txt','a',encoding='utf-8')
 
         today_diary.write(self.file_upload.date)
-        today_diary.write('\t')
+        today_diary.write('\n')
         today_diary.write(self.file_upload.contents)
         today_diary.write('\n')
         today_diary.write('\n')
@@ -88,6 +88,6 @@ class CalendarWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mainWindow = Calender()
+    mainWindow = CalendarWindow()
     mainWindow.show()
     sys.exit(app.exec_())
