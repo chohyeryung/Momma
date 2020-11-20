@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from calendar import *
 
-from calender import Calender
 
 class Choice(QMainWindow):
     def __init__(self):
