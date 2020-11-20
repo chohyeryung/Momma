@@ -11,7 +11,7 @@ class CalendarWindow(QMainWindow):
 
         # 윈도우 설정
         self.setGeometry(300, 100, 1200, 800)  # x, y, w, h
-        self.setWindowTitle('Canlendar Widget')
+        self.setWindowTitle('일기 쓰기')
 
         # CalendarWidget 위젯 화면에 표시
         self.cal = QCalendarWidget(self)

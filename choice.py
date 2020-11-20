@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from calendar import Calendar
 
 from calendarWindow import CalendarWindow
+from showDiaryWindow import ShowDiaryWindow
 
 
 class Choice(QMainWindow):
@@ -26,7 +27,7 @@ class Choice(QMainWindow):
 
         btnShowDiary.move(900, 100)
         btnShowDiary.resize(200, 200)
-        #btnShowDiary.clicked.connect(self.ShowDiary)
+        btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
         vbox.addStretch(1)
@@ -46,9 +47,13 @@ class Choice(QMainWindow):
         self.show()
 
     def GoDiary(self):
-        print('눌렀따')
-        self.ex = CalendarWindow(self)
-        self.ex.show()
+        self.calw = CalendarWindow(self)
+        self.calw.show()
+        self.hide()
+
+    def ShowDiary(self):
+        self.choicesh = ShowDiaryWindow(self)
+        self.choicesh.show()
         self.hide()
 
 if __name__=="__main__":
