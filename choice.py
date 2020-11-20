@@ -1,15 +1,18 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
-from calendar import *
+from calendar import Calendar
+
+from calendarWindow import CalendarWindow
+from showDiaryWindow import ShowDiaryWindow
 
 
 class Choice(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.choiceUI()
 
-    def initUI(self):
+    def choiceUI(self):
         btnDiary=QPushButton('일기 쓰기', self)
         btnGame=QPushButton('맘마 먹자',self)
         btnShowDiary=QPushButton('일기 보기',self)
@@ -24,7 +27,7 @@ class Choice(QMainWindow):
 
         btnShowDiary.move(900, 100)
         btnShowDiary.resize(200, 200)
-        #btnShowDiary.clicked.connect(self.ShowDiary)
+        btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
         vbox.addStretch(1)
@@ -44,10 +47,14 @@ class Choice(QMainWindow):
         self.show()
 
     def GoDiary(self):
-        print('눌렀따')
+        self.calw = CalendarWindow(self)
+        self.calw.show()
         self.hide()
-        self.ex = Calendar()
-        self.ex.show()
+
+    def ShowDiary(self):
+        self.choicesh = ShowDiaryWindow(self)
+        self.choicesh.show()
+        self.hide()
 
 if __name__=="__main__":
     app=QApplication(sys.argv)

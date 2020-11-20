@@ -1,17 +1,17 @@
 import sys
-from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, QApplication, QCalendarWidget, QPlainTextEdit
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from choice import Choice
 
 from Upload_diary import Upload
 
-
-class Calender(QMainWindow):
-    def __init__(self):
+class CalendarWindow(QMainWindow):
+    def __init__(self,choice_window):
         super().__init__()
+        self.choice_window=choice_window
+
         # 윈도우 설정
         self.setGeometry(300, 100, 1200, 800)  # x, y, w, h
-        self.setWindowTitle('Canlendar Widget')
+        self.setWindowTitle('일기 쓰기')
 
         # CalendarWidget 위젯 화면에 표시
         self.cal = QCalendarWidget(self)
@@ -72,7 +72,7 @@ class Calender(QMainWindow):
         today_diary=open('diary.txt','a',encoding='utf-8')
 
         today_diary.write(self.file_upload.date)
-        today_diary.write('\t')
+        today_diary.write('\n')
         today_diary.write(self.file_upload.contents)
         today_diary.write('\n')
         today_diary.write('\n')
@@ -83,11 +83,11 @@ class Calender(QMainWindow):
 
     def exist(self):
         self.hide()
-        self.ex = Choice()
-        self.ex.show()
+        ch=self.choice_window
+        ch.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mainWindow = Calender()
+    mainWindow = CalendarWindow()
     mainWindow.show()
     sys.exit(app.exec_())

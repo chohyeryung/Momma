@@ -1,10 +1,9 @@
 from PyQt5.QtGui import QIcon
 
-from calender import Calender
+from calendarWindow import CalendarWindow
 from choice import Choice
 import sys
-from PyQt5.QtWidgets import QLabel, QMainWindow, QPushButton, \
-    QApplication, QCalendarWidget, QPlainTextEdit
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 class Main_Diary(QMainWindow):
