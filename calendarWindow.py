@@ -40,6 +40,8 @@ class CalendarWindow(QMainWindow):
         btn2 = QPushButton("취소", self)
         btn1.setGeometry(450, 650, 80, 30)
         btn1.clicked.connect(self.GoUpload)
+        btn1.clicked.connect(self.show_dialog)
+        self.msg = QMessageBox()
         btn2.setGeometry(650, 650, 80, 30)
         btn2.clicked.connect(self.exist)
 
@@ -85,6 +87,20 @@ class CalendarWindow(QMainWindow):
         self.hide()
         ch=self.choice_window
         ch.show()
+
+    def show_dialog(self):
+        self.msg.setIcon(QMessageBox.Information)
+        self.msg.setWindowTitle('일기 쓰기')
+        self.msg.setText('일기가 저장되었습니다.')
+        self.msg.setStandardButtons(QMessageBox.Ok)
+        retval = self.msg.exec_()
+
+        # # 반환값 판단
+        # print('QMessageBox 리턴값 ', retval)
+        if retval == QMessageBox.Ok:
+            self.exist()
+        elif retval == QMessageBox.Cancel:
+            print('messagebox cancel : ', retval)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
