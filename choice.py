@@ -15,20 +15,22 @@ class Choice(QMainWindow):
 
     def choiceUI(self):
         btnDiary=QPushButton('', self)
-        btnGame=QPushButton('맘마 먹자',self)
-        btnShowDiary=QPushButton('일기 보기',self)
+        btnGame=QPushButton('',self)
+        btnShowDiary=QPushButton('',self)
 
-        btnDiary.move(100,100)
+        btnDiary.move(100,250)
         btnDiary.resize(300,300)
-        btnDiary.setStyleSheet("background-image : url(baby_rrr.jpg);")
+        btnDiary.setStyleSheet("background-image : url(giveme_diary.jpg);")
         btnDiary.clicked.connect(self.GoDiary)
 
-        btnGame.move(500, 100)
-        btnGame.resize(200, 200)
+        btnGame.move(450, 250)
+        btnGame.resize(300, 300)
+        btnGame.setStyleSheet("background-image : url(mamma.jpg);")
         btnGame.clicked.connect(self.GoGame)
 
-        btnShowDiary.move(900, 100)
-        btnShowDiary.resize(200, 200)
+        btnShowDiary.move(800, 250)
+        btnShowDiary.resize(300, 300)
+        btnShowDiary.setStyleSheet("background-image : url(show_diary.jpg);")
         btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
