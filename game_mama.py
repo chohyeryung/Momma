@@ -35,7 +35,7 @@ class Game_mama(QMainWindow):
         background = pygame.image.load("image/game_back.jpg")
 
         #캐릭터 불러오기
-        character= pygame.image.load("image/game_baby.png")
+        character= pygame.image.load("image/baby_game.png")
         character_size = character.get_rect().size # 이미지 크기 구해옴 70*70 적당함
         character_width = character_size[0] #가로크기
         character_height = character_size[1] #세로 크기
