@@ -20,17 +20,17 @@ class Choice(QMainWindow):
 
         btnDiary.move(100,250)
         btnDiary.resize(300,300)
-        btnDiary.setStyleSheet("background-image : url(giveme_diary.jpg);")
+        btnDiary.setStyleSheet("background-image : url(image/giveme_diary.jpg);")
         btnDiary.clicked.connect(self.GoDiary)
 
         btnGame.move(450, 250)
         btnGame.resize(300, 300)
-        btnGame.setStyleSheet("background-image : url(mamma.jpg);")
+        btnGame.setStyleSheet("background-image : url(image/mamma.jpg);")
         btnGame.clicked.connect(self.GoGame)
 
         btnShowDiary.move(800, 250)
         btnShowDiary.resize(300, 300)
-        btnShowDiary.setStyleSheet("background-image : url(show_diary.jpg);")
+        btnShowDiary.setStyleSheet("background-image : url(image/show_diary.jpg);")
         btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
@@ -46,7 +46,7 @@ class Choice(QMainWindow):
 
         self.setLayout(hbox)
         self.setWindowTitle('Momma')
-        self.setWindowIcon(QIcon('baby.png'))
+        self.setWindowIcon(QIcon('image/baby.png'))
         self.setGeometry(300,100,1200,800)
         self.show()
 

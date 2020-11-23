@@ -32,10 +32,10 @@ class Game_mama(QMainWindow):
         clock = pygame.time.Clock()
 
         #배경이미지 불러오기
-        background = pygame.image.load("Background.png")
+        background = pygame.image.load("image/game_back.jpg")
 
         #캐릭터 불러오기
-        character= pygame.image.load("sd.png")
+        character= pygame.image.load("image/game_baby.png")
         character_size = character.get_rect().size # 이미지 크기 구해옴 70*70 적당함
         character_width = character_size[0] #가로크기
         character_height = character_size[1] #세로 크기
@@ -51,7 +51,7 @@ class Game_mama(QMainWindow):
 
         #적 캐릭터
         #캐릭터 불러오기
-        enemy = pygame.image.load("Black.png")
+        enemy = pygame.image.load("image/Black.png")
         enemy_size = enemy.get_rect().size # 이미지 크기 구해옴 70*70 적당함
         enemy_width = enemy_size[0] #가로크기
         enemy_height = enemy_size[1] #세로 크기
@@ -60,7 +60,7 @@ class Game_mama(QMainWindow):
         enemy_speed = 7
 
         #좋은 캐릭터
-        goodfood = pygame.image.load("good.png")
+        goodfood = pygame.image.load("image/good.png")
         goodfood_size = goodfood.get_rect().size
         goodfood_width = goodfood_size[0]
         goodfood_height = goodfood_size[1]
@@ -114,8 +114,6 @@ class Game_mama(QMainWindow):
             goodfood_reat = goodfood.get_rect()
             goodfood_reat.left = goodfood_x_pos
             goodfood_reat.top = goodfood_y_pos
-
-
 
             #충돌 체크
             if character_reat.colliderect(enemy_reat): #충돌 확인

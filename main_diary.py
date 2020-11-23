@@ -20,7 +20,7 @@ class Main_Diary(QMainWindow):
 
     def initUI(self):
         self.setWindowTitle('Momma')
-        self.setWindowIcon(QIcon('baby.png'))
+        self.setWindowIcon(QIcon('image/baby.png'))
         self.setGeometry(300, 100, 1200, 800)
 
         # label1 = QLabel()
