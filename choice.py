@@ -14,12 +14,13 @@ class Choice(QMainWindow):
         self.choiceUI()
 
     def choiceUI(self):
-        btnDiary=QPushButton('일기 쓰기', self)
+        btnDiary=QPushButton('', self)
         btnGame=QPushButton('맘마 먹자',self)
         btnShowDiary=QPushButton('일기 보기',self)
 
         btnDiary.move(100,100)
-        btnDiary.resize(200,200)
+        btnDiary.resize(300,300)
+        btnDiary.setStyleSheet("background-image : url(baby_rrr.jpg);")
         btnDiary.clicked.connect(self.GoDiary)
 
         btnGame.move(500, 100)
