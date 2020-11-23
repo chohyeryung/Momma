@@ -3,7 +3,7 @@ import pygame
 from PyQt5.QtWidgets import QMainWindow
 
 
-class Main_Diary(QMainWindow):
+class Game_mama(QMainWindow):
     pygame.init() #초기화 반드시 필요함
 
     #폰트
@@ -28,10 +28,10 @@ class Main_Diary(QMainWindow):
     clock = pygame.time.Clock()
 
     #배경이미지 불러오기
-    background = pygame.image.load("D:\Momma\Background.png")
+    background = pygame.image.load("Background.png")
 
     #캐릭터 불러오기
-    character= pygame.image.load("D:\Momma\sd.png")
+    character= pygame.image.load("sd.png")
     character_size = character.get_rect().size # 이미지 크기 구해옴 70*70 적당함
     character_width = character_size[0] #가로크기
     character_height = character_size[1] #세로 크기
@@ -47,7 +47,7 @@ class Main_Diary(QMainWindow):
 
     #적 캐릭터
     #캐릭터 불러오기
-    enemy = pygame.image.load("D:\Momma\Black.png")
+    enemy = pygame.image.load("Black.png")
     enemy_size = enemy.get_rect().size # 이미지 크기 구해옴 70*70 적당함
     enemy_width = enemy_size[0] #가로크기
     enemy_height = enemy_size[1] #세로 크기
@@ -56,7 +56,7 @@ class Main_Diary(QMainWindow):
     enemy_speed = 7
 
     #좋은 캐릭터
-    goodfood = pygame.image.load("D:\Momma\good.png")
+    goodfood = pygame.image.load("good.png")
     goodfood_size = goodfood.get_rect().size
     goodfood_width = goodfood_size[0]
     goodfood_height = goodfood_size[1]

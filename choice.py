@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from calendar import Calendar
 
+from game_mama import Game_mama
 from calendarWindow import CalendarWindow
 from showDiaryWindow import ShowDiaryWindow
 
@@ -23,7 +24,7 @@ class Choice(QMainWindow):
 
         btnGame.move(500, 100)
         btnGame.resize(200, 200)
-        # btnGame.clicked.connect(self.GoGame)
+        btnGame.clicked.connect(self.GoGame)
 
         btnShowDiary.move(900, 100)
         btnShowDiary.resize(200, 200)
@@ -56,8 +57,13 @@ class Choice(QMainWindow):
         self.choicesh.show()
         self.hide()
 
+    def GoGame(self):
+        self.gamew = Game_mama(self)
+        self.gamew.show()
+        self.hide()
+
 if __name__=="__main__":
     app=QApplication(sys.argv)
-    main=Choice()
-    main.show()
+    choice=Choice()
+    choice.show()
     sys.exit(app.exec_())
