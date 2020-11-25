@@ -7,7 +7,6 @@ from game_mama import Game_mama
 from calendarWindow import CalendarWindow
 from showDiaryWindow import ShowDiaryWindow
 
-
 class Choice(QMainWindow):
     def __init__(self):
         super().__init__()

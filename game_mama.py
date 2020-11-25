@@ -5,13 +5,16 @@ import pygame
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 class Game_mama(QMainWindow):
-    def __init__(self,game_window):
+    def __init__(self, game_window):
         super().__init__()
         self.game_window = game_window
         pygame.init() #초기화 반드시 필요함
 
         #폰트
         game_font = pygame.font.Font(None, 40) #폰트 ,크기
+
+        #총 점수
+        total_score = 0
 
         #총 시간
         total_time = 45
@@ -44,7 +47,6 @@ class Game_mama(QMainWindow):
 
         #이동 좌표
         to_x = 0
-        to_y = 0
 
         #캐릭터 이동 속도
         character_speed = 8
@@ -88,9 +90,11 @@ class Game_mama(QMainWindow):
                     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                         to_x = 0
 
-            character_x_pos += to_x
+
 
             #캐릭터 위치
+            character_x_pos += to_x
+
             if character_x_pos < 0:
                 character_x_pos = 0
             elif character_x_pos > screen_width - character_width:
@@ -101,6 +105,12 @@ class Game_mama(QMainWindow):
             if enemy_y_pos > screen_height:
                 enemy_y_pos = 0
                 enemy_x_pos = random.randint(0, screen_width - enemy_width)
+
+            goodfood_x_pos += goodfood_speed
+
+            if goodfood_y_pos > screen_height:
+                goodfood_y_pos = 0
+                goodfood_x_pos = random.randint(0, screen_width - goodfood_width)
 
             #충돌 처리
             character_reat = character.get_rect()
@@ -117,11 +127,13 @@ class Game_mama(QMainWindow):
 
             #충돌 체크
             if character_reat.colliderect(enemy_reat): #충돌 확인
-                print("충돌했습니다.")
-                running = False
-            elif character_reat.colliderect(enemy_reat): #충돌 확인
-                print("충돌했습니다.")
-                running = False
+                print("나쁜음식을 먹었어요")
+                total_time -= 50
+                running = True
+            elif character_reat.colliderect(goodfood_reat): #충돌 확인
+                print("좋은 음식을 먹었어요")
+                total_score += 100
+                running = True
 
             # screen.fill(()) RGB컬러로도 화면 채우기 가능
             screen.blit(background, (0,0))
@@ -131,7 +143,9 @@ class Game_mama(QMainWindow):
             ellipsis_time = (pygame.time.get_ticks() - start_ticks) / 1000 #초 단위로 지난 시간 표시
             #출력할 글자 ,True, 글자 색 설정
             timer= game_font.render("Time : {}".format(int(total_time - ellipsis_time)), True, (255,255,255))
+            scroe = game_font.render("Scroe: {}".format(int(total_score)), True, (255, 255, 255))
             screen.blit(timer, (10, 20))
+            screen.blit(scroe, (250, 20))
 
             #지정된 시간보다 시간을 초과한다면
             if total_time - ellipsis_time <= 0:
