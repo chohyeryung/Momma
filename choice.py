@@ -3,9 +3,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from calendar import Calendar
 
+from game_mama import Game_mama
 from calendarWindow import CalendarWindow
 from showDiaryWindow import ShowDiaryWindow
-
 
 class Choice(QMainWindow):
     def __init__(self):
@@ -13,20 +13,23 @@ class Choice(QMainWindow):
         self.choiceUI()
 
     def choiceUI(self):
-        btnDiary=QPushButton('일기 쓰기', self)
-        btnGame=QPushButton('맘마 먹자',self)
-        btnShowDiary=QPushButton('일기 보기',self)
+        btnDiary=QPushButton('', self)
+        btnGame=QPushButton('',self)
+        btnShowDiary=QPushButton('',self)
 
-        btnDiary.move(100,100)
-        btnDiary.resize(200,200)
+        btnDiary.move(100,250)
+        btnDiary.resize(300,300)
+        btnDiary.setStyleSheet("background-image : url(image/giveme_diary.jpg);")
         btnDiary.clicked.connect(self.GoDiary)
 
-        btnGame.move(500, 100)
-        btnGame.resize(200, 200)
-        # btnGame.clicked.connect(self.GoGame)
+        btnGame.move(450, 250)
+        btnGame.resize(300, 300)
+        btnGame.setStyleSheet("background-image : url(image/mamma.jpg);")
+        btnGame.clicked.connect(self.GoGame)
 
-        btnShowDiary.move(900, 100)
-        btnShowDiary.resize(200, 200)
+        btnShowDiary.move(800, 250)
+        btnShowDiary.resize(300, 300)
+        btnShowDiary.setStyleSheet("background-image : url(image/show_diary.jpg);")
         btnShowDiary.clicked.connect(self.ShowDiary)
 
         vbox = QVBoxLayout()
@@ -42,7 +45,7 @@ class Choice(QMainWindow):
 
         self.setLayout(hbox)
         self.setWindowTitle('Momma')
-        self.setWindowIcon(QIcon('baby.png'))
+        self.setWindowIcon(QIcon('image/baby.png'))
         self.setGeometry(300,100,1200,800)
         self.show()
 
@@ -56,8 +59,13 @@ class Choice(QMainWindow):
         self.choicesh.show()
         self.hide()
 
+    def GoGame(self):
+        self.gamew = Game_mama(self)
+        self.gamew.show()
+        self.hide()
+
 if __name__=="__main__":
     app=QApplication(sys.argv)
-    main=Choice()
-    main.show()
+    choice=Choice()
+    choice.show()
     sys.exit(app.exec_())
