@@ -2,20 +2,27 @@ import random
 import sys
 
 import pygame
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import *
 
-class Game_mama(QMainWindow):
-    def __init__(self,game_window):
-        super().__init__()
-        self.game_window = game_window
+class Game_mama(QWidget):
+
+    def __init__(self):
         pygame.init() #초기화 반드시 필요함
+        self.initUI()
+
+    def initUI(self):
 
         #폰트
         game_font = pygame.font.Font(None, 40) #폰트 ,크기
 
         #총 시간
-        total_time = 45
+        total_time = 15
 
+        #닿은 횟수
+        count = 0
+
+        # 총 점수
+        total_score = 0
         #시작 시간 정보
         start_ticks = pygame.time.get_ticks()
 
@@ -35,7 +42,7 @@ class Game_mama(QMainWindow):
         background = pygame.image.load("image/game_back.jpg")
 
         #캐릭터 불러오기
-        character= pygame.image.load("image/baby_game.png")
+        character= pygame.image.load("image/game_baby.png")
         character_size = character.get_rect().size # 이미지 크기 구해옴 70*70 적당함
         character_width = character_size[0] #가로크기
         character_height = character_size[1] #세로 크기
@@ -44,17 +51,25 @@ class Game_mama(QMainWindow):
 
         #이동 좌표
         to_x = 0
-        to_y = 0
+
+        #이미지 랜덤
+        bad1 = pygame.image.load("image/coffee.png")
+        bad2 = pygame.image.load("image/honey.png")
+        bad3 = pygame.image.load("image/raman.png")
+        bad4 = pygame.image.load("image/spicy.JPG")
+
+        # bad_image = [bad1, bad2, bad3, bad4]
+        #
+        # random_img = random.randint(0, bad_image.length())
 
         #캐릭터 이동 속도
-        character_speed = 8
+        character_speed = 9
 
-        #적 캐릭터
-        #캐릭터 불러오기
-        enemy = pygame.image.load("image/Black.png")
-        enemy_size = enemy.get_rect().size # 이미지 크기 구해옴 70*70 적당함
-        enemy_width = enemy_size[0] #가로크기
-        enemy_height = enemy_size[1] #세로 크기
+        #나쁜 음식
+        enemy = pygame.image.load("image/sandwich.png")
+        enemy_size = enemy.get_rect().size  # 이미지 크기 구해옴 70*70 적당함
+        enemy_width = enemy_size[0]  # 가로크기
+        enemy_height = enemy_size[1]  # 세로 크기
         enemy_x_pos = random.randint(0, screen_width - enemy_width)
         enemy_y_pos = 0
         enemy_speed = 7
@@ -101,6 +116,9 @@ class Game_mama(QMainWindow):
             if enemy_y_pos > screen_height:
                 enemy_y_pos = 0
                 enemy_x_pos = random.randint(0, screen_width - enemy_width)
+                enemy_y_pos > screen_height
+                enemy_y_pos = 0
+                enemy_x_pos = random.randint(0, screen_width - enemy_width)
 
             #충돌 처리
             character_reat = character.get_rect()
@@ -111,17 +129,14 @@ class Game_mama(QMainWindow):
             enemy_reat.left = enemy_x_pos
             enemy_reat.top = enemy_y_pos
 
-            goodfood_reat = goodfood.get_rect()
-            goodfood_reat.left = goodfood_x_pos
-            goodfood_reat.top = goodfood_y_pos
-
             #충돌 체크
-            if character_reat.colliderect(enemy_reat): #충돌 확인
-                print("충돌했습니다.")
+            if character_reat.colliderect(enemy_reat):
+                count += 1
+                print(count)
+                print("나쁜 음식을 먹었습니다!")
+                total_score = total_score - 5
                 running = False
-            elif character_reat.colliderect(enemy_reat): #충돌 확인
-                print("충돌했습니다.")
-                running = False
+
 
             # screen.fill(()) RGB컬러로도 화면 채우기 가능
             screen.blit(background, (0,0))
@@ -129,26 +144,26 @@ class Game_mama(QMainWindow):
             screen.blit(enemy, (enemy_x_pos, enemy_y_pos)) #적 그리기
 
             ellipsis_time = (pygame.time.get_ticks() - start_ticks) / 1000 #초 단위로 지난 시간 표시
+
             #출력할 글자 ,True, 글자 색 설정
             timer= game_font.render("Time : {}".format(int(total_time - ellipsis_time)), True, (255,255,255))
             screen.blit(timer, (10, 20))
 
             #지정된 시간보다 시간을 초과한다면
             if total_time - ellipsis_time <= 0:
-                print("시간 초과")
                 running = False
 
             pygame.display.update()  # 화면을 계속해서 호출해야 함
 
         #끝나기 전 잠시 기달리는 시간
-        pygame.time.delay(2000)
+        pygame.time.delay(3000)
 
         #py게임 종료
-        pygame.quit()
-
+        print('종료?')
+        # pygame.quit()
 
 if __name__=="__main__":
-    app=QApplication(sys.argv)
-    gamee=Game_mama()
+    app = QApplication(sys.argv)
+    gamee = Game_mama()
     gamee.show()
     sys.exit(app.exec_())
