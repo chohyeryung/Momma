@@ -159,8 +159,7 @@ class Game_mama(QWidget):
         pygame.time.delay(3000)
 
         #py게임 종료
-        print('종료?')
-        # pygame.quit()
+        pygame.quit()
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
