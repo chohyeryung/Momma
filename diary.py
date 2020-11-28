@@ -15,7 +15,7 @@ class Diary(QMainWindow):
         btn.clicked.connect(QCoreApplication.instance().quit)
 
         self.setWindowTitle('Momma')
-        self.setWindowIcon(QIcon('baby.png'))
+        self.setWindowIcon(QIcon('image/baby.png'))
         self.setGeometry(300, 100, 1200, 800)
         self.show()
 
